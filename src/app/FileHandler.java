@@ -15,7 +15,7 @@ public class FileHandler {
         Path newDir;
         try {
             newDir = Files.createDirectory(path);
-            System.out.println("Creatin new directory...");
+            System.out.println("Creating new directory...");
         } catch (FileAlreadyExistsException e) {
             return "Folder has been already created!";
         } catch (IOException e) {
