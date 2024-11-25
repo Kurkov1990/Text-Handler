@@ -1,5 +1,6 @@
 package app;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
@@ -7,6 +8,18 @@ import java.nio.file.Path;
 
 
 public class FileHandler {
+
+    public void createFolder(String path) {
+        File folder = new File(path);
+        boolean isCreated= folder.mkdir();
+        if (isCreated) {
+                System.out.println("New folder created...");
+            } else if (folder.exists()) {
+                System.out.println("Folder is already created");
+            } else {
+            System.out.println("Something went wrong :(");
+        }
+       }
 
     public String createFile(String path) {
         Path newFile;
