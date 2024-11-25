@@ -5,21 +5,24 @@ import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 public class FileHandler {
 
-    public void createFolder(String path) {
-        File folder = new File(path);
-        boolean isCreated= folder.mkdir();
-        if (isCreated) {
-                System.out.println("New folder created...");
-            } else if (folder.exists()) {
-                System.out.println("Folder is already created");
-            } else {
-            System.out.println("Something went wrong :(");
+    public static String createFolder(String newPath) {
+        Path path = Paths.get(newPath);
+        Path newDir;
+        try {
+            newDir = Files.createDirectory(path);
+            System.out.println("Creatin new directory...");
+        } catch (FileAlreadyExistsException e) {
+            return "Folder has been already created!";
+        } catch (IOException e) {
+            return "Something wrong " + e.getMessage();
         }
-       }
+        return newDir + " created!";
+    }
 
     public String createFile(String path) {
         Path newFile;
