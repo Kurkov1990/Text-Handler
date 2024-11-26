@@ -10,13 +10,14 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         FileHandler handler = new FileHandler();
-        handler.createFolder(BASE_PATH);
+
         System.out.print("Enter file name: ");
         String newFileName = scanner.nextLine();
         System.out.print("Enter text for adding to the file: ");
         String content = scanner.nextLine();
         String path = BASE_PATH + newFileName + ".txt";
 
+        getOutput(handler.createFolder(BASE_PATH));
         getOutput(handler.createFile(path));
         getOutput(handler.writeToFile(Paths.get(path), content));
         getOutput("CONTENT: " + handler.readFromFile(path));
